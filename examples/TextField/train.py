@@ -56,7 +56,7 @@ def write_net(dataset, patch_size, npRatio):
     Dataset: 'synth' for Synth-Text; 'ctw' for SCUT-CTW1500; 'total' for Total-Text; 'ic15' for ICDAR2015; 'td' for MSRA-TD500.
     """
     net = caffe.NetSpec()
-    datalayer_params = dict(data_dir='/home/wangyukang/dataset/', dataset=dataset, patch_size=patch_size, seed=123, mean=(103.939, 116.779, 123.68))
+    datalayer_params = dict(data_dir='../../data/', dataset=dataset, patch_size=patch_size, seed=123, mean=(103.939, 116.779, 123.68))
     losslayer_params = dict(npRatio=npRatio)
     net.image, net.vec, net.weight = caffe.layers.Python(module='pylayerUtils', layer='DataLayer', ntop=3, param_str=str(datalayer_params))
 
